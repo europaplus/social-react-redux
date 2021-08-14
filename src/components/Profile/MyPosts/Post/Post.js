@@ -3,7 +3,7 @@ import styled from './Post.module.css';
 const Post = (props) => {
 	return (
 		<div className={styled.item}>
-			<img src='https://seeklogo.com/images/A/avatar-logo-E20E2BD62B-seeklogo.com.png'></img>
+			<img src='https://seeklogo.com/images/A/avatar-logo-E20E2BD62B-seeklogo.com.png' alt="img"/>
 			{props.message}
 			<div>
 				<span>like</span> {props.likesCount}

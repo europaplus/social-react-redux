@@ -1,28 +1,32 @@
 import React from 'react';
 import styled from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
+import Message from './Message/Messages';
+import DialogItem from './DialogItem/DialogItem';
 
 const Dialogs = (props) => {
+    const dialogData = [
+        {id: 1, name: 'William'},
+        {id: 2, name: 'Dimych'},
+        {id: 3, name: 'Roman'},
+        {id: 4, name: 'Sanya'},
+    ];
+    const messageData = [
+        {id: 5, message: 'Hi'},
+        {id: 6, message: 'How are you'},
+        {id: 7, message: 'I\'m fine'},
+        {id: 8, message: 'What do you want?'},
+    ];
+    const dialogsElements = dialogData
+        .map((d) => <DialogItem name={d.name} id={d.id}/>);
+    const messagesElements = messageData
+        .map((m) => <Message id={m.id} message={m.message}/>);
     return (
         <div className={styled.dialogs}>
             <div className={styled.dialogsItems}>
-                <div className={styled.dialog + ' ' + styled.active}>
-                    <NavLink to="/dialogs/1">William</NavLink>
-                </div>
-                <div className={styled.dialog}>
-                    <NavLink to="/dialogs/2">Dim</NavLink>
-                </div>
-                <div className={styled.dialog}>
-                    <NavLink to="/dialogs/3">Roma</NavLink>
-                </div>
-                <div className={styled.dialog}>
-                    <NavLink to="/dialogs/4">Sanya</NavLink>
-                </div>
+                {dialogsElements}
             </div>
             <div className={styled.messages}>
-                <div className={styled.message}>Hi</div>
-                <div className={styled.message}>How are you</div>
-                <div className={styled.message}>Im fine</div>
+                {messagesElements}
             </div>
         </div>
     );
