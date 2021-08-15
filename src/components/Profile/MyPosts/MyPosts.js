@@ -1,21 +1,25 @@
 import Post from './Post/Post';
 import styled from './MyPosts.module.css';
+import React from "react";
 
-const MyPosts = () => {
-    const postData = [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12},
-        {id: 2, message: 'It\'s my first post', likesCount: 11},
-    ];
-    const postsMessages = postData.map(p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>);
+const MyPosts = (props) => {
+    const postsMessages = props.posts.map(p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>);
+    const newPostElement = React.createRef();
+    const addPost = () => {
+        const text = newPostElement.current.value;
+        alert(text);
+    };
     return (
         <div className={styled.postsBlock}>
-			<h3>My posts</h3>
+            <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea placeholder='Create post'></textarea>
+                    <textarea placeholder='Create post' ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button className='btn btn-success'>Add post</button>
+                    <button className='btn btn-success' onClick={addPost}>
+                        Add post
+                    </button>
                 </div>
             </div>
             <div className={styled.posts}>
