@@ -8,21 +8,23 @@ import {Route} from "react-router-dom";
 
 const App = (props) => {
     return (
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Route path='/dialogs'
-                           render={() => <Dialogs state={props.state.dialogsPage}/>}
-                    />
-                    <Route path='/profile'
-                           render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost}
-                                                  updateNewPostText={props.updateNewPostText}/>}/>
-                    {/*<Route path='/news' component={News}/>*/}
-                    {/*<Route path='/music' component={Music}/>*/}
-                    {/*<Route path='/Settings' component={Settings}/>*/}
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className='app-wrapper-content'>
+                <Route path='/dialogs'
+                       render={() => <Dialogs store={props.store}
+                       dispatch={props.dispatch}/>}
+                />
+                <Route path='/profile'
+                       render={() => <Profile profilePage={props.store.getState().profilePage}
+                                              dispatch={props.dispatch}/>}
+                />
+                {/*<Route path='/news' component={News}/>*/}
+                {/*<Route path='/music' component={Music}/>*/}
+                {/*<Route path='/Settings' component={Settings}/>*/}
             </div>
+        </div>
     );
 };
 
