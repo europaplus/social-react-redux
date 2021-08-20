@@ -5,11 +5,11 @@ import DialogItem from './DialogItem/DialogItem';
 
 
 const Dialogs = (props) => {
-    const state = props.dialogPage;
+    const state = props.dialogsPage;
     const dialogsElements = state.dialogs
-        .map((d) => <DialogItem name={d.name} id={d.id}/>);
+        .map((d) => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     const messagesElements = state.messages
-        .map((m) => <Message id={m.id} message={m.message}/>);
+        .map((m) => <Message id={m.id} key={m.id} message={m.message}/>);
     const onSendMessageClick = () => {
         props.sendMessage();
     }

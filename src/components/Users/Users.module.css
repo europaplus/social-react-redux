@@ -1,0 +1,12 @@
+img.avatar {
+    width: 150px;
+    height: 150px;
+}
+
+button {
+    width: 90px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
